@@ -1,0 +1,8 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import { LoginForm } from '@/components/store/AccountViews';
+---
+
+<StoreLayout title="Entrar">
+  <LoginForm client:only="react" />
+</StoreLayout>

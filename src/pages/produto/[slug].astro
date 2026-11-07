@@ -1,0 +1,87 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import ProductBuy from '@/components/store/ProductBuy';
+import ProductGallery from '@/components/store/ProductGallery';
+import { ProductCard } from '@/components/store/ui';
+import { config, fmt, products, url, waLink } from '@/lib/catalog';
+import { db } from '@/lib/db';
+
+export function getStaticPaths() {
+  return products.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props;
+// foto principal + fotos extras de produtos.json → gallery
+const images = [p.image, ...(p.gallery ?? [])].filter((src): src is string => Boolean(src));
+
+// "Você também pode gostar": mesma categoria primeiro, completa com outras até 4
+const others = products.filter((x) => x.id !== p.id);
+const related = [...others.filter((x) => x.cat === p.cat), ...others.filter((x) => x.cat !== p.cat)].slice(0, 4);
+
+const reviews = db.avaliacoes.filter((r) => r.produto === p.slug);
+const lowStock = p.stock > 0 && p.stock <= 5;
+const waMsg = `Olá! Quero comprar a ${p.name} (SKU LP-${1000 + p.id}). Qual tamanho tem disponível?`;
+---
+
+<StoreLayout title={p.name} description={p.desc} active={p.cat} image={p.image}>
+  <section class="pt-7">
+    <a href={url.cat(p.cat)} class="mb-5 inline-block text-[13px] text-stone hover:text-paper">← voltar para {p.cat}</a>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-start gap-9">
+      <ProductGallery client:load images={images} name={p.name} label={p.shot} />
+
+      <div class="flex max-w-[460px] flex-col gap-5">
+        <div class="flex flex-col gap-2">
+          <span class="font-mono text-[10px] uppercase tracking-[.14em] text-gold">{p.cat}</span>
+          <h1 class="text-[clamp(26px,3.4vw,38px)] leading-[1.08] font-extrabold tracking-[-.01em]">{p.name}</h1>
+          <p class="text-[15px] leading-relaxed text-stone">{p.desc}</p>
+        </div>
+        <div class="flex flex-col gap-1 border-y border-line py-[18px]">
+          <span class="text-3xl font-extrabold tracking-[-.01em]">{fmt(p.price)}</span>
+          <span class="text-[13px] text-gold">{fmt(p.price * (1 - config.pixOff / 100))} no Pix ({config.pixOff}% off)</span>
+          <span class="text-[13px] text-dim">ou 4x de {fmt(p.price / 4)} sem juros</span>
+          {lowStock && (
+            <span class="mt-2 inline-flex items-center gap-2 self-start font-mono text-[11px] uppercase tracking-[.1em] text-[#D9776B]">
+              <span class="size-1.5 rounded-full bg-[#D9776B]"></span>Últimas {p.stock} unidades
+            </span>
+          )}
+        </div>
+        <ProductBuy client:load product={{ id: p.id, name: p.name, cat: p.cat, price: p.price, sizes: p.sizes, image: p.image }} />
+        <a
+          href={waLink(waMsg)}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center justify-center rounded-[2px] border border-wa/60 p-3.5 text-sm font-semibold text-wa transition-colors hover:bg-wa hover:text-wa-ink"
+        >
+          Comprar pelo WhatsApp
+        </a>
+        <div class="flex flex-col gap-2.5 text-[13px] leading-relaxed text-stone">
+          <span>Entrega em 3–7 dias úteis. Frete grátis acima de R$ {config.freeShip}.</span>
+          <span>Troca e devolução grátis em até 30 dias.</span>
+          <span class="font-mono text-[11px] text-dim">SKU LP-{1000 + p.id}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {reviews.length > 0 && (
+    <section class="pt-14">
+      <h2 class="eyebrow mb-[18px] text-[13px] text-stone">Quem comprou · {reviews.length} {reviews.length === 1 ? 'avaliação' : 'avaliações'}</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-3">
+        {reviews.map((r) => (
+          <figure class="flex flex-col gap-3 border border-line bg-panel p-[22px]">
+            <span class="text-[13px] tracking-[.2em] text-gold" aria-label={`${r.stars} de 5 estrelas`}>{'★'.repeat(r.stars) + '☆'.repeat(5 - r.stars)}</span>
+            <blockquote class="text-[15px] leading-relaxed text-pretty">{r.text}</blockquote>
+            <figcaption class="mt-auto font-mono text-[11px] text-dim">{r.who}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="pt-14">
+    <h2 class="eyebrow mb-[18px] text-[13px] text-stone">Você também pode gostar</h2>
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-3">
+      {related.map((x) => <ProductCard p={x} />)}
+    </div>
+  </section>
+</StoreLayout>

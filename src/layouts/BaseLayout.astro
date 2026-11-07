@@ -1,0 +1,39 @@
+---
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** foto da prévia do link (WhatsApp, Instagram); padrão: foto da campanha */
+  image?: string;
+}
+
+const { title, description = 'Moda masculina essencial: camisas, bermudas, calças, tênis e camisas de time.', image = '/images/banners/campanha-hero.jpg' } = Astro.props;
+// A prévia do WhatsApp/Instagram só aceita foto com endereço completo:
+// defina `site` no astro.config.mjs com o domínio publicado (ex.: https://lojalp.com.br)
+const ogImage = Astro.site ? new URL(image, Astro.site).href : image;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Loja LP" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0B0B0B" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo.jpg" />
+    <title>{title}</title>
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen bg-ink text-paper">
+    <slot />
+  </body>
+</html>

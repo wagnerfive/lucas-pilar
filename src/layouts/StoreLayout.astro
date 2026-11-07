@@ -1,0 +1,106 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import HeaderActions from '@/components/store/HeaderActions';
+import StoreToast from '@/components/store/StoreToast';
+
+import { categories, config, phoneLabel, url, waLink, type Category } from '@/lib/catalog';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** categoria destacada no menu */
+  active?: Category | 'Todos';
+  /** página de busca: resultados atualizam enquanto digita */
+  liveSearch?: boolean;
+  /** foto da prévia do link */
+  image?: string;
+}
+
+const { title, description, active, liveSearch = false, image } = Astro.props;
+const nav: (Category | 'Todos')[] = ['Todos', ...categories];
+---
+
+<BaseLayout title={`${title} · Loja LP`} description={description} image={image}>
+  <div class="flex min-h-screen flex-col">
+    <div class="bg-gold px-5 py-2 text-center font-mono text-[11px] uppercase tracking-[.1em] text-ink">
+      {config.pixOff}% off no Pix · frete grátis acima de R$ {config.freeShip} · troca em 30 dias
+    </div>
+
+    <header class="sticky top-0 z-20 border-b border-line bg-ink/95 backdrop-blur">
+      <!-- telas estreitas: logo + ações na 1ª linha, categorias numa 2ª linha com rolagem lateral -->
+      <div class="mx-auto flex max-w-[1280px] flex-wrap items-center gap-x-3 gap-y-1.5 px-4 pt-2.5 pb-1 md:gap-5 md:px-5 md:py-3.5">
+        <a href={url.home} class="flex shrink-0 items-center gap-2.5">
+          <img src="/logo.jpg" alt="LP" width="38" height="38" class="block size-8 rounded-[2px] md:size-[38px]" />
+          <span class="hidden font-mono text-[11px] uppercase tracking-[.22em] text-stone sm:inline">Loja LP</span>
+        </a>
+
+        <nav
+          class="order-last -mx-4 flex w-[calc(100%+2rem)] flex-nowrap gap-1 overflow-x-auto px-3 whitespace-nowrap [scrollbar-width:none] md:order-none md:mx-0 md:w-auto md:min-w-0 md:flex-1 md:flex-wrap md:px-0 [&::-webkit-scrollbar]:hidden"
+          aria-label="Categorias"
+        >
+          {nav.map((c) => (
+            <a
+              href={url.cat(c)}
+              aria-current={active === c ? 'page' : undefined}
+              class:list={[
+                'shrink-0 border-b-2 px-2.5 py-2 text-[13px] tracking-[.02em] transition-colors',
+                active === c ? 'border-gold text-gold' : 'border-transparent text-paper hover:text-gold-hi',
+              ]}
+            >
+              {c}
+            </a>
+          ))}
+        </nav>
+
+        <HeaderActions client:only="react" live={liveSearch}>
+          <div slot="fallback" class="ml-auto h-[34px] w-[260px] md:ml-0 md:h-[38px] md:w-[330px]"></div>
+        </HeaderActions>
+      </div>
+    </header>
+
+    <main class="mx-auto w-full max-w-[1280px] flex-1 px-5 pb-[72px]">
+      <slot />
+    </main>
+
+    <StoreToast client:only="react" />
+
+    <footer class="border-t border-line bg-ink px-5 pt-10 pb-7">
+      <div class="mx-auto grid max-w-[1280px] grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8 text-[13px] text-stone">
+        <div class="flex flex-col gap-3">
+          <img src="/logo.jpg" alt="Loja LP" width="40" height="40" class="size-10 rounded-[2px]" />
+          <p class="max-w-[30ch] leading-relaxed">Moda masculina essencial e camisas de time versão torcedor.</p>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="eyebrow text-gold">Loja</span>
+          {nav.map((c) => <a href={url.cat(c)} class="hover:text-paper">{c}</a>)}
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="eyebrow text-gold">Atendimento</span>
+          <a href={waLink('Olá! Vim pelo site da Loja LP.')} target="_blank" rel="noreferrer" class="hover:text-paper">WhatsApp {phoneLabel}</a>
+          <span>Seg a sáb, 9h às 19h</span>
+          <a href="https://instagram.com/" target="_blank" rel="noreferrer" class="hover:text-paper">Instagram @lojalp</a>
+          <a href={url.catalog} class="hover:text-paper">Catálogo WhatsApp</a>
+          <a href={url.orders} class="hover:text-paper">Meus pedidos</a>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="eyebrow text-gold">Pagamento</span>
+          <span>Pix com {config.pixOff}% off</span>
+          <span>Cartão em até 4x sem juros</span>
+          <span>Boleto · Carteira digital</span>
+          <span>Troca grátis em 30 dias</span>
+        </div>
+      </div>
+      <div class="mx-auto mt-9 flex max-w-[1280px] flex-wrap items-center justify-between gap-4 border-t border-line pt-5 font-mono text-[11px] text-faint">
+        <span>Loja LP · CNPJ 00.000.000/0001-00 (exemplo) · São Paulo, SP</span>
+        <a
+          href="https://wagnerfernando.com/?utm_source=lucaspilar&utm_medium=referral&utm_campaign=footer"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-stone"
+        >
+          Desenvolvido por Wagner Fernando
+        </a>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

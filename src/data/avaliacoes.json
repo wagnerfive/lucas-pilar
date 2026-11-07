@@ -1,0 +1,44 @@
+[
+  {
+    "id": "rafael",
+    "stars": 5,
+    "text": "Malha da camisa oversized é bem pesada, não deformou depois de lavar. Já pedi a segunda.",
+    "who": "Rafael M. · São Paulo",
+    "produto": "camisa-oversized-preta"
+  },
+  {
+    "id": "bruna",
+    "stars": 5,
+    "text": "Camisa de time chegou em 4 dias com nome e número. Tecido leve e acabamento caprichado, veste muito bem.",
+    "who": "Bruna S. · Recife",
+    "produto": "camisa-de-time-i-listrada"
+  },
+  {
+    "id": "diego",
+    "stars": 4,
+    "text": "Calça cargo caiu bem, só pedi um número acima do habitual. Troca foi tranquila.",
+    "who": "Diego A. · Curitiba",
+    "produto": "calca-cargo-preta"
+  },
+  {
+    "id": "thiago",
+    "stars": 5,
+    "text": "Comprei preta e depois a polo. Caimento oversized certinho, sem ficar parecendo camisola.",
+    "who": "Thiago R. · Belo Horizonte",
+    "produto": "camisa-oversized-preta"
+  },
+  {
+    "id": "marcos",
+    "stars": 5,
+    "text": "Tênis confortável desde o primeiro dia. Numeração normal, uso 41 em tudo e serviu.",
+    "who": "Marcos V. · Porto Alegre",
+    "produto": "tenis-court-branco"
+  },
+  {
+    "id": "lucas",
+    "stars": 4,
+    "text": "Bermuda boa de bolso, sarja grossa. Ficou um pouco comprida, mas gosto assim.",
+    "who": "Lucas F. · Salvador",
+    "produto": "bermuda-cargo-bege"
+  }
+]

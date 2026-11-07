@@ -1,0 +1,177 @@
+[
+  {
+    "id": "LP-731204",
+    "createdAt": "2026-10-16T14:12:00-03:00",
+    "cliente": "Ana Beatriz Lima",
+    "fone": "(11) 98123-4455",
+    "entrega": "Entrega",
+    "endereco": "Rua Harmonia, 210 — Vila Madalena, São Paulo",
+    "pagamento": "Pix",
+    "obs": "Se possível entregar depois das 18h",
+    "items": [
+      {
+        "name": "Camisa Oversized Preta",
+        "cat": "Camisas",
+        "size": "M",
+        "qty": 2,
+        "price": 129.9
+      },
+      {
+        "name": "Bermuda Moletom Preta",
+        "cat": "Bermudas",
+        "size": "M",
+        "qty": 1,
+        "price": 119.9
+      }
+    ],
+    "total": 379.7,
+    "status": "Novo"
+  },
+  {
+    "id": "LP-731188",
+    "createdAt": "2026-10-16T10:47:00-03:00",
+    "cliente": "Carlos Eduardo Reis",
+    "fone": "(11) 99456-7788",
+    "entrega": "Retirada",
+    "endereco": "",
+    "pagamento": "Cartão",
+    "obs": "",
+    "items": [
+      {
+        "name": "Camisa de Time I — Listrada",
+        "cat": "Camisas de time",
+        "size": "G",
+        "qty": 1,
+        "price": 349.9
+      }
+    ],
+    "total": 349.9,
+    "status": "Novo"
+  },
+  {
+    "id": "LP-730952",
+    "createdAt": "2026-10-15T19:30:00-03:00",
+    "cliente": "Juliana Martins",
+    "fone": "(11) 97654-3210",
+    "entrega": "Entrega",
+    "endereco": "Av. Paulista, 1500, ap 82 — Bela Vista, São Paulo",
+    "pagamento": "Pix",
+    "obs": "Presente, pode mandar sem nota",
+    "items": [
+      {
+        "name": "Tênis Court Branco",
+        "cat": "Tênis",
+        "size": "41",
+        "qty": 1,
+        "price": 459
+      },
+      {
+        "name": "Camisa Polo Piquê Grafite",
+        "cat": "Camisas",
+        "size": "M",
+        "qty": 1,
+        "price": 159.9
+      }
+    ],
+    "total": 618.9,
+    "status": "Confirmado"
+  },
+  {
+    "id": "LP-730611",
+    "createdAt": "2026-10-14T16:05:00-03:00",
+    "cliente": "Rafael Oliveira",
+    "fone": "(11) 98877-6655",
+    "entrega": "Entrega",
+    "endereco": "Rua Augusta, 900 — Consolação, São Paulo",
+    "pagamento": "Dinheiro",
+    "obs": "Troco para R$ 300",
+    "items": [
+      {
+        "name": "Calça Cargo Preta",
+        "cat": "Calças",
+        "size": "G",
+        "qty": 1,
+        "price": 229.9
+      }
+    ],
+    "total": 229.9,
+    "status": "Enviado"
+  },
+  {
+    "id": "LP-729870",
+    "createdAt": "2026-10-12T11:22:00-03:00",
+    "cliente": "Marina Costa",
+    "fone": "(11) 96543-2109",
+    "entrega": "Retirada",
+    "endereco": "",
+    "pagamento": "Pix",
+    "obs": "",
+    "items": [
+      {
+        "name": "Camisa de Time II — Amarela",
+        "cat": "Camisas de time",
+        "size": "P",
+        "qty": 1,
+        "price": 349.9
+      },
+      {
+        "name": "Camisa Retrô 1994",
+        "cat": "Camisas de time",
+        "size": "M",
+        "qty": 1,
+        "price": 279.9
+      }
+    ],
+    "total": 629.8,
+    "status": "Entregue"
+  },
+  {
+    "id": "LP-729455",
+    "createdAt": "2026-10-11T09:40:00-03:00",
+    "cliente": "Pedro Henrique Alves",
+    "fone": "(11) 99988-1122",
+    "entrega": "Entrega",
+    "endereco": "Rua dos Pinheiros, 55 — Pinheiros, São Paulo",
+    "pagamento": "Cartão",
+    "obs": "",
+    "items": [
+      {
+        "name": "Bermuda Cargo Bege",
+        "cat": "Bermudas",
+        "size": "GG",
+        "qty": 2,
+        "price": 179.9
+      },
+      {
+        "name": "Camisa Linho Areia",
+        "cat": "Camisas",
+        "size": "G",
+        "qty": 1,
+        "price": 199.9
+      }
+    ],
+    "total": 559.7,
+    "status": "Entregue"
+  },
+  {
+    "id": "LP-728903",
+    "createdAt": "2026-10-09T20:15:00-03:00",
+    "cliente": "Fernanda Rocha",
+    "fone": "(11) 97777-3344",
+    "entrega": "Entrega",
+    "endereco": "Rua Teodoro Sampaio, 1200 — Pinheiros, São Paulo",
+    "pagamento": "Pix",
+    "obs": "Cliente desistiu",
+    "items": [
+      {
+        "name": "Tênis Runner Cinza",
+        "cat": "Tênis",
+        "size": "39",
+        "qty": 1,
+        "price": 529
+      }
+    ],
+    "total": 529,
+    "status": "Cancelado"
+  }
+]

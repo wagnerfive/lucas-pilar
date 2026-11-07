@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import WhatsAppCatalog from '@/components/catalog/WhatsAppCatalog';
+import { phoneLabel, waLink } from '@/lib/catalog';
+import StoreToast from '@/components/store/StoreToast';
+
+import { Shot } from '@/components/store/ui';
+
+const steps = [
+  { n: '01', title: 'Monte a lista', text: 'Escolha o tamanho de cada peça e adicione ao pedido.' },
+  { n: '02', title: 'Envie no WhatsApp', text: 'A mensagem já vai pronta com peças, tamanhos e total.' },
+  { n: '03', title: 'Combine entrega e pagamento', text: 'Confirmamos estoque, frete ou retirada e o Pix na conversa.' },
+];
+---
+
+<BaseLayout title="Catálogo WhatsApp · Loja LP" description="Monte sua lista e feche o pedido pelo WhatsApp.">
+  <div class="flex min-h-screen flex-col">
+    <div class="bg-wa px-5 py-2.5 text-center font-mono text-[11px] uppercase tracking-[.1em] text-wa-ink">
+      Pedidos pelo WhatsApp · resposta em minutos · entrega e retirada
+    </div>
+
+    <div class="flex-1 pb-[90px]">
+      <WhatsAppCatalog client:load />
+
+      <section class="mx-auto mt-14 grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(280px,1fr))] border border-line-2 bg-panel max-[1240px]:mx-5">
+        <Shot
+          src="/images/banners/atendimento-catalogo.jpg"
+          alt="Atendimento e Catálogo WhatsApp"
+          label="Atendimento Loja LP"
+          large
+          className="min-h-[260px]"
+        />
+        <div class="flex flex-col justify-center gap-4 p-[clamp(24px,4vw,40px)]">
+          <span class="eyebrow text-gold">Como funciona</span>
+          {steps.map((s) => (
+            <div class="flex items-start gap-3.5">
+              <span class="pt-0.5 font-mono text-xs text-gold">{s.n}</span>
+              <div class="flex flex-col gap-0.5">
+                <span class="text-[15px] font-semibold">{s.title}</span>
+                <span class="text-sm leading-relaxed text-stone">{s.text}</span>
+              </div>
+            </div>
+          ))}
+          <a
+            href={waLink('Olá! Vi o catálogo da Loja LP e queria tirar uma dúvida.')}
+            target="_blank"
+            rel="noreferrer"
+            class="self-start rounded-[2px] bg-wa px-[22px] py-3 text-sm font-semibold text-wa-ink"
+          >
+            Falar com o atendimento
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <StoreToast client:only="react" />
+
+    <footer class="border-t border-line bg-ink px-5 py-7">
+      <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 font-mono text-[11px] text-faint">
+        <span class="uppercase tracking-[.14em]">Catálogo LP · pedidos pelo WhatsApp</span>
+        <div class="flex items-center gap-[18px]">
+          <span>{phoneLabel}</span>
+          <a href="/" class="uppercase tracking-[.1em] text-gold hover:text-gold-hi">Loja</a>
+          <a
+            href="https://wagnerfernando.com/?utm_source=lucaspilar&utm_medium=referral&utm_campaign=footer"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-stone"
+          >
+            Desenvolvido por Wagner Fernando
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

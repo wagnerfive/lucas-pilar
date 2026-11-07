@@ -1,0 +1,25 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import { ProductCard, btn } from '@/components/store/ui';
+import { byId, config, url } from '@/lib/catalog';
+
+const featured = config.vitrines.maisVendidos.map((id) => byId(id)).filter((p) => p !== undefined);
+---
+
+<StoreLayout title="Página não encontrada">
+  <section class="flex max-w-[560px] flex-col items-start gap-5 py-16">
+    <span class="eyebrow text-gold">Erro 404</span>
+    <h1 class="text-[clamp(30px,4.4vw,48px)] leading-[1.05] font-extrabold tracking-[-.01em]">Essa página saiu de linha.</h1>
+    <p class="text-[15px] leading-relaxed text-stone">O endereço pode ter mudado ou o produto não está mais à venda. Dá uma olhada no que está saindo agora.</p>
+    <div class="flex flex-wrap gap-2.5">
+      <a href={url.home} class={btn.gold}>Voltar ao início</a>
+      <a href={url.cat()} class={btn.outline}>Ver todos os produtos</a>
+    </div>
+  </section>
+  <section class="pb-6">
+    <h2 class="eyebrow mb-[18px] text-[13px] text-stone">Mais vendidos</h2>
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-3">
+      {featured.map((p) => <ProductCard p={p} />)}
+    </div>
+  </section>
+</StoreLayout>

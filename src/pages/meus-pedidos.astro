@@ -1,0 +1,8 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import { MyOrders } from '@/components/store/AccountViews';
+---
+
+<StoreLayout title="Meus pedidos">
+  <MyOrders client:only="react" />
+</StoreLayout>

@@ -1,0 +1,8 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import { OrderDone } from '@/components/store/AccountViews';
+---
+
+<StoreLayout title="Pedido confirmado">
+  <OrderDone client:only="react" />
+</StoreLayout>

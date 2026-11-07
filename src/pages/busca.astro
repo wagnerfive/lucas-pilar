@@ -1,0 +1,8 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import SearchResults from '@/components/store/SearchResults';
+---
+
+<StoreLayout title="Busca" liveSearch>
+  <SearchResults client:only="react" />
+</StoreLayout>

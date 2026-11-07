@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource/archivo/400.css";
+@import "@fontsource/archivo/500.css";
+@import "@fontsource/archivo/600.css";
+@import "@fontsource/archivo/800.css";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/dm-mono/500.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Cores da marca LP (usadas nas páginas públicas) */
+@theme {
+    --color-ink: #0B0B0B;
+    --color-paper: #F4F1EC;
+    --color-gold: #C89A5B;
+    --color-gold-hi: #E0B878;
+    --color-stone: #9A948C;
+    --color-dim: #6F6A63;
+    --color-faint: #4F4B46;
+    --color-line: #1E1C1A;
+    --color-line-2: #232120;
+    --color-edge: #2B2827;
+    --color-edge-2: #343130;
+    --color-panel: #101010;
+    --color-tile: #121110;
+    --color-field: #141312;
+    --color-wa: #25D366;
+    --color-wa-ink: #06281A;
+    --color-ok: #8CBE79;
+    --color-warn: #C98080;
+
+    --font-mono: 'DM Mono', ui-monospace, monospace;
+
+    --animate-lp-up: lp-up .2s ease-out;
+    @keyframes lp-up {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: none; }
+    }
+}
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: 'Archivo', Helvetica, Arial, sans-serif;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Tema shadcn (painel admin) na paleta da marca: fundo escuro, destaque dourado */
+:root {
+    --background: #0B0B0B;
+    --foreground: #F4F1EC;
+    --card: #101010;
+    --card-foreground: #F4F1EC;
+    --popover: #141312;
+    --popover-foreground: #F4F1EC;
+    --primary: #C89A5B;
+    --primary-foreground: #0B0B0B;
+    --secondary: #1E1C1A;
+    --secondary-foreground: #F4F1EC;
+    --muted: #1B1918;
+    --muted-foreground: #9A948C;
+    --accent: #1E1C1A;
+    --accent-foreground: #F4F1EC;
+    --destructive: #C98080;
+    --border: #232120;
+    --input: #2B2827;
+    --ring: #C89A5B;
+    --chart-1: #C89A5B;
+    --chart-2: #8FB3D9;
+    --chart-3: #B79CD9;
+    --chart-4: #8CBE79;
+    --chart-5: #C98080;
+    --radius: 0.375rem;
+    --sidebar: #0E0E0E;
+    --sidebar-foreground: #F4F1EC;
+    --sidebar-primary: #C89A5B;
+    --sidebar-primary-foreground: #0B0B0B;
+    --sidebar-accent: #1B1918;
+    --sidebar-accent-foreground: #F4F1EC;
+    --sidebar-border: #1E1C1A;
+    --sidebar-ring: #C89A5B;
+    color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Espaço reservado das fotos dos produtos */
+@utility photo {
+  background: repeating-linear-gradient(135deg, #1b1917 0 10px, #171514 10px 20px);
+}
+@utility photo-lg {
+  background: repeating-linear-gradient(135deg, #1b1917 0 12px, #161413 12px 24px);
+}
+/* Rótulo em caixa alta com a fonte mono */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}

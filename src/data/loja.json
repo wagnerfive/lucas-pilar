@@ -1,0 +1,42 @@
+[
+  {
+    "id": "loja",
+    "pixOff": 10,
+    "freeShip": 299,
+    "shipCost": 24.9,
+    "whatsapp": "5511999998888",
+    "showPricesInCatalog": true,
+    "categorias": [
+      "Camisas",
+      "Bermudas",
+      "Calças",
+      "Tênis",
+      "Camisas de time"
+    ],
+    "tamanhos": [
+      "PP",
+      "P",
+      "M",
+      "G",
+      "GG",
+      "39",
+      "41",
+      "43"
+    ],
+    "vitrines": {
+      "maisVendidos": [
+        1,
+        5,
+        11,
+        14
+      ],
+      "novidades": [
+        2,
+        8,
+        12,
+        15,
+        7
+      ]
+    }
+  }
+]

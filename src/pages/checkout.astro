@@ -1,0 +1,11 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import CheckoutView from '@/components/store/CheckoutView';
+---
+
+<StoreLayout title="Checkout">
+  <section class="pt-9">
+    <h1 class="mb-6 text-[clamp(28px,4vw,42px)] font-extrabold tracking-[-.01em]">Checkout</h1>
+    <CheckoutView client:only="react" />
+  </section>
+</StoreLayout>

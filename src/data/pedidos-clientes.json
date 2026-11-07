@@ -1,0 +1,20 @@
+[
+  {
+    "id": "LP-2418",
+    "date": "14 out 2026",
+    "items": "2 itens · Camisa Oversized, Bermuda Cargo",
+    "status": "Entregue",
+    "statusColor": "#7FA86B",
+    "total": "R$ 309,80",
+    "pay": "Pix"
+  },
+  {
+    "id": "LP-2390",
+    "date": "11 out 2026",
+    "items": "1 item · Tênis Court Branco",
+    "status": "Em transporte",
+    "statusColor": "#C89A5B",
+    "total": "R$ 459,00",
+    "pay": "Cartão parcelado"
+  }
+]

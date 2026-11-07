@@ -1,0 +1,285 @@
+[
+  {
+    "id": 1,
+    "slug": "camisa-oversized-preta",
+    "name": "Camisa Oversized Preta",
+    "cat": "Camisas",
+    "price": 129.9,
+    "sizes": [
+      "PP",
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 18,
+    "shot": "camisa preta — frente",
+    "desc": "Malha pesada 240g penteada, corte oversized e gola reforçada. Cai bem solta sem perder forma na lavagem.",
+    "ativo": true,
+    "image": "/images/produtos/camisa-oversized-preta.jpg",
+    "gallery": [
+      "/images/produtos/camisa-oversized-preta-2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "camisa-linho-areia",
+    "name": "Camisa Linho Areia",
+    "cat": "Camisas",
+    "price": 199.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 9,
+    "shot": "camisa linho — busto",
+    "desc": "Linho com viscose, botão de madeira e caimento leve. Boa para calor com visual arrumado.",
+    "ativo": true,
+    "image": "/images/produtos/camisa-linho-areia.jpg"
+  },
+  {
+    "id": 3,
+    "slug": "camisa-polo-pique-grafite",
+    "name": "Camisa Polo Piquê Grafite",
+    "cat": "Camisas",
+    "price": 159.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 12,
+    "shot": "polo grafite — frente",
+    "desc": "Piquê de algodão com punho canelado. O básico que resolve reunião e churrasco.",
+    "ativo": true,
+    "image": "/images/produtos/camisa-polo-pique-grafite.jpg"
+  },
+  {
+    "id": 4,
+    "slug": "camisa-branca-manga-longa",
+    "name": "Camisa Branca Manga Longa",
+    "cat": "Camisas",
+    "price": 179.9,
+    "sizes": [
+      "P",
+      "M",
+      "G"
+    ],
+    "stock": 6,
+    "shot": "camisa branca — detalhe",
+    "desc": "Tricoline fio 60, pouco amarrotável, corte reto.",
+    "ativo": true,
+    "image": "/images/produtos/camisa-branca-manga-longa.jpg"
+  },
+  {
+    "id": 5,
+    "slug": "bermuda-cargo-bege",
+    "name": "Bermuda Cargo Bege",
+    "cat": "Bermudas",
+    "price": 179.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 14,
+    "shot": "bermuda cargo — lateral",
+    "desc": "Sarja com elastano, seis bolsos e cós ajustável. Comprimento no joelho.",
+    "ativo": true,
+    "image": "/images/produtos/bermuda-cargo-bege.jpg"
+  },
+  {
+    "id": 6,
+    "slug": "bermuda-moletom-preta",
+    "name": "Bermuda Moletom Preta",
+    "cat": "Bermudas",
+    "price": 119.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 20,
+    "shot": "bermuda moletom — frente",
+    "desc": "Moletom flanelado com cordão embutido. Para treinar e para nada fazer.",
+    "ativo": true,
+    "image": "/images/produtos/bermuda-moletom-preta.jpg"
+  },
+  {
+    "id": 7,
+    "slug": "bermuda-jeans-escura",
+    "name": "Bermuda Jeans Escura",
+    "cat": "Bermudas",
+    "price": 149.9,
+    "sizes": [
+      "P",
+      "M",
+      "G"
+    ],
+    "stock": 7,
+    "shot": "bermuda jeans — detalhe",
+    "desc": "Jeans rígido lavado, barra dobrada.",
+    "ativo": true,
+    "image": "/images/produtos/bermuda-jeans-escura.jpg"
+  },
+  {
+    "id": 8,
+    "slug": "calca-cargo-preta",
+    "name": "Calça Cargo Preta",
+    "cat": "Calças",
+    "price": 229.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 11,
+    "shot": "calça cargo — corpo inteiro",
+    "desc": "Corte wide leg, bolsos com velcro e ajuste no tornozelo.",
+    "ativo": true,
+    "image": "/images/produtos/calca-cargo-preta.jpg"
+  },
+  {
+    "id": 9,
+    "slug": "calca-jeans-reta-indigo",
+    "name": "Calça Jeans Reta Índigo",
+    "cat": "Calças",
+    "price": 249.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 8,
+    "shot": "calça jeans — frente",
+    "desc": "Denim 12oz, lavagem média, modelagem reta clássica.",
+    "ativo": true,
+    "image": "/images/produtos/calca-jeans-reta-indigo.jpg"
+  },
+  {
+    "id": 10,
+    "slug": "calca-alfaiataria-chumbo",
+    "name": "Calça Alfaiataria Chumbo",
+    "cat": "Calças",
+    "price": 289.9,
+    "sizes": [
+      "P",
+      "M",
+      "G"
+    ],
+    "stock": 5,
+    "shot": "alfaiataria — caimento",
+    "desc": "Tecido com toque frio, pregas frontais e cós forrado.",
+    "ativo": true,
+    "image": "/images/produtos/calca-alfaiataria-chumbo.jpg"
+  },
+  {
+    "id": 11,
+    "slug": "tenis-court-branco",
+    "name": "Tênis Court Branco",
+    "cat": "Tênis",
+    "price": 459,
+    "sizes": [
+      "39",
+      "41",
+      "43"
+    ],
+    "stock": 10,
+    "shot": "tênis branco — perfil",
+    "desc": "Couro liso, solado de borracha vulcanizada e palmilha em EVA.",
+    "ativo": true,
+    "image": "/images/produtos/tenis-court-branco.jpg"
+  },
+  {
+    "id": 12,
+    "slug": "tenis-runner-cinza",
+    "name": "Tênis Runner Cinza",
+    "cat": "Tênis",
+    "price": 529,
+    "sizes": [
+      "39",
+      "41",
+      "43"
+    ],
+    "stock": 6,
+    "shot": "tênis runner — perfil",
+    "desc": "Cabedal em mesh respirável com entressola em espuma de retorno.",
+    "ativo": true,
+    "image": "/images/produtos/tenis-runner-cinza.jpg"
+  },
+  {
+    "id": 13,
+    "slug": "tenis-chunky-off-white",
+    "name": "Tênis Chunky Off-White",
+    "cat": "Tênis",
+    "price": 599,
+    "sizes": [
+      "41",
+      "43"
+    ],
+    "stock": 3,
+    "shot": "tênis chunky — 3/4",
+    "desc": "Solado alto de 4,5cm, sobreposições em nobuck.",
+    "ativo": true,
+    "image": "/images/produtos/tenis-chunky-off-white.jpg"
+  },
+  {
+    "id": 14,
+    "slug": "camisa-de-time-i-listrada",
+    "name": "Camisa de Time I — Listrada",
+    "cat": "Camisas de time",
+    "price": 349.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 22,
+    "shot": "camisa de time — frente com escudo",
+    "desc": "Versão torcedor em poliéster com tecnologia de secagem rápida. Escudo bordado.",
+    "ativo": true,
+    "image": "/images/produtos/camisa-de-time-i-listrada.jpg"
+  },
+  {
+    "id": 15,
+    "slug": "camisa-de-time-ii-amarela",
+    "name": "Camisa de Time II — Amarela",
+    "cat": "Camisas de time",
+    "price": 349.9,
+    "sizes": [
+      "P",
+      "M",
+      "G"
+    ],
+    "stock": 15,
+    "shot": "camisa de time — costas com número",
+    "desc": "Segundo uniforme, gola polo e recortes laterais em malha perfurada.",
+    "ativo": true,
+    "image": "/images/produtos/camisa-de-time-ii-amarela.jpg"
+  },
+  {
+    "id": 16,
+    "slug": "camisa-retro-1994",
+    "name": "Camisa Retrô 1994",
+    "cat": "Camisas de time",
+    "price": 279.9,
+    "sizes": [
+      "M",
+      "G",
+      "GG"
+    ],
+    "stock": 4,
+    "shot": "camisa retrô — detalhe gola",
+    "desc": "Reedição em algodão com escudo em patch e numeração flocada.",
+    "ativo": true,
+    "image": "/images/produtos/camisa-retro-1994.jpg"
+  }
+]

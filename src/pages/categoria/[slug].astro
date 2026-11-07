@@ -1,0 +1,20 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import CategoryBrowser from '@/components/store/CategoryBrowser';
+import { categories, products, slugify, type Category } from '@/lib/catalog';
+
+export function getStaticPaths() {
+  const all: (Category | 'Todos')[] = ['Todos', ...categories];
+  return all.map((cat) => ({ params: { slug: cat === 'Todos' ? 'todos' : slugify(cat) }, props: { cat } }));
+}
+
+const { cat } = Astro.props;
+const list = cat === 'Todos' ? products : products.filter((p) => p.cat === cat);
+---
+
+<StoreLayout title={cat} active={cat}>
+  <section class="pt-9">
+    <h1 class="mb-1 text-[clamp(28px,4vw,44px)] font-extrabold tracking-[-.01em]">{cat}</h1>
+    <CategoryBrowser client:load cat={cat} products={list} />
+  </section>
+</StoreLayout>

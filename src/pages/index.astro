@@ -1,0 +1,165 @@
+---
+import StoreLayout from '@/layouts/StoreLayout.astro';
+import Newsletter from '@/components/store/Newsletter';
+import { ProductCard, Shot, btn } from '@/components/store/ui';
+import { byId, categories, config, url } from '@/lib/catalog';
+import { db } from '@/lib/db';
+
+// vitrines e avaliações vêm do banco local (src/data/loja.json e avaliacoes.json)
+const pick = (ids: number[]) => ids.map((id) => byId(id)).filter((p) => p !== undefined);
+const featured = pick(config.vitrines.maisVendidos);
+const novidades = pick(config.vitrines.novidades);
+
+const reviews = db.avaliacoes.slice(0, 3).map((r) => ({ ...r, stars: '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars), n: r.stars }));
+
+const perks = [
+  { label: 'Entrega', text: '3 a 7 dias úteis para todo o Brasil, com rastreio por e-mail.' },
+  { label: 'Troca grátis', text: '30 dias para trocar tamanho sem custo de frete.' },
+  { label: 'Pagamento', text: 'Pix, cartão em até 4x sem juros, boleto e carteira digital.' },
+  { label: 'Atendimento', text: 'WhatsApp de segunda a sábado, das 9h às 19h.' },
+];
+
+const promos = [
+  { tag: 'Kit básico', title: '3 camisas por R$ 399', text: 'Oversized preta, polo piquê grafite e branca manga longa. Economia de R$ 70,70 no combo.', cta: 'Ver camisas', href: url.cat('Camisas') },
+  { tag: 'Tênis', title: 'Do 39 ao 43, em até 4x', text: 'Court, runner e chunky. Troca de numeração grátis na primeira compra.', cta: 'Ver tênis', href: url.cat('Tênis') },
+];
+
+const catImages: Record<string, string> = {
+  'Camisas': '/images/categorias/camisas.jpg',
+  'Bermudas': '/images/categorias/bermudas.jpg',
+  'Calças': '/images/categorias/calcas.jpg',
+  'Tênis': '/images/categorias/tenis.jpg',
+  'Camisas de time': '/images/categorias/camisas-de-time.jpg',
+};
+
+const h2 = 'eyebrow text-[13px] text-stone';
+---
+
+<StoreLayout title="Início">
+  <section class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-stretch gap-6 pt-10 pb-12">
+    <div class="flex max-w-[520px] flex-col justify-center gap-5">
+      <span class="eyebrow text-gold">Coleção 2026</span>
+      <h1 class="text-[clamp(38px,5.2vw,68px)] leading-[.98] font-extrabold tracking-[-.02em] text-pretty">Roupa boa,<br />sem enrolação.</h1>
+      <p class="max-w-[42ch] text-base leading-relaxed text-stone">
+        Moda masculina essencial: camisas, bermudas, calças, tênis e camisas de time. Peças básicas bem feitas e camisas de time versão torcedor no mesmo lugar.
+      </p>
+      <div class="flex flex-wrap gap-2.5">
+        <a href={url.cat()} class={btn.gold}>Ver tudo</a>
+        <a href={url.cat('Camisas de time')} class={btn.outline}>Camisas de time</a>
+      </div>
+      <div class="flex flex-wrap gap-6 pt-2 font-mono text-[11px] tracking-[.06em] text-dim uppercase">
+        <span>{config.pixOff}% off no Pix</span>
+        <span>Frete grátis acima de R$ {config.freeShip}</span>
+        <span>Troca em 30 dias</span>
+      </div>
+    </div>
+    <Shot
+      src="/images/banners/campanha-hero.jpg"
+      alt="Loja de moda masculina com camisas, tênis e acessórios expostos"
+      label="Coleção 2026"
+      className="order-first md:order-none md:min-h-[380px] border border-line-2 aspect-[4/3] object-cover"
+    />
+  </section>
+
+  <section class="pt-2 pb-13">
+    <h2 class:list={[h2, 'mb-[18px]']}>Categorias</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3">
+      {categories.map((c) => (
+        <a href={url.cat(c)} class="group flex flex-col border border-line-2 bg-tile text-paper hover:border-edge-2 transition-colors">
+          <Shot src={catImages[c]} alt={c} label={c} className="aspect-[4/3]" />
+          <div class="flex items-center justify-between p-3.5">
+            <span class="text-[15px] font-semibold">{c}</span>
+            <span class="text-[15px] text-gold transition-transform group-hover:translate-x-1">→</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="pb-5">
+    <div class="mb-[18px] flex items-baseline justify-between gap-4">
+      <h2 class={h2}>Mais vendidos</h2>
+      <a href={url.cat()} class={btn.link}>ver catálogo completo</a>
+    </div>
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(215px,1fr))] gap-3">
+      {featured.map((p) => <ProductCard p={p} />)}
+    </div>
+  </section>
+
+  <section class="my-13 grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] border border-line-2 bg-panel">
+    <Shot
+      src="/images/banners/torcida.jpg"
+      alt="Uniformes Torcedor"
+      label="Camisas de Time"
+      className="min-h-[300px]"
+    />
+    <div class="flex flex-col justify-center gap-[18px] p-[clamp(24px,4vw,44px)]">
+      <span class="eyebrow text-gold">Versão torcedor</span>
+      <h2 class="text-[clamp(26px,3.4vw,40px)] leading-[1.05] font-extrabold tracking-[-.01em]">Camisas de time, versão torcedor</h2>
+      <p class="max-w-[44ch] text-[15px] leading-relaxed text-stone">
+        Primeiro e segundo uniforme, mais as retrôs que voltaram. Numeração e nome personalizados sem custo extra.
+      </p>
+      <div class="flex flex-wrap gap-2.5">
+        <a href={url.cat('Camisas de time')} class={btn.gold}>Ver camisas de time</a>
+        <a href={url.cat()} class={btn.outline}>Ver catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-13">
+    <div class="mb-[18px] flex flex-wrap items-baseline justify-between gap-4">
+      <h2 class={h2}>Chegou essa semana</h2>
+      <a href={url.cat()} class={btn.link}>ver tudo</a>
+    </div>
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3">
+      {novidades.map((p) => <ProductCard p={p} />)}
+    </div>
+  </section>
+
+  <section class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-3 pb-13">
+    {promos.map((b) => (
+      <div class="flex flex-col gap-3.5 border border-line-2 bg-panel p-7">
+        <span class="eyebrow text-gold">{b.tag}</span>
+        <h3 class="text-2xl leading-tight font-extrabold tracking-[-.01em]">{b.title}</h3>
+        <p class="text-sm leading-relaxed text-stone">{b.text}</p>
+        <a href={b.href} class:list={[btn.outline, 'mt-auto self-start px-5 py-3 text-[13px]']}>{b.cta}</a>
+      </div>
+    ))}
+    <div class="flex flex-col gap-3.5 border border-gold bg-gold/[.07] p-7">
+      <span class="eyebrow text-gold">Pix</span>
+      <h3 class="text-2xl leading-tight font-extrabold tracking-[-.01em]">{config.pixOff}% off pagando no Pix</h3>
+      <p class="text-sm leading-relaxed text-stone">Desconto aplicado direto no checkout, sem cupom.</p>
+      <a href={url.cat()} class:list={[btn.gold, 'mt-auto self-start px-5 py-3 text-[13px]']}>Aproveitar</a>
+    </div>
+  </section>
+
+  <section class="pb-13">
+    <h2 class:list={[h2, 'mb-[18px]']}>Quem comprou</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-3">
+      {reviews.map((r) => (
+        <figure class="flex flex-col gap-3 border border-line bg-panel p-[22px]">
+          <span class="text-[13px] tracking-[.2em] text-gold" aria-label={`${r.n} de 5 estrelas`}>{r.stars}</span>
+          <blockquote class="text-[15px] leading-relaxed text-pretty">{r.text}</blockquote>
+          <figcaption class="mt-auto font-mono text-[11px] text-dim">{r.who}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3 pb-13">
+    {perks.map((b) => (
+      <div class="flex flex-col gap-2 border border-line p-5">
+        <span class="eyebrow tracking-[.14em] text-gold">{b.label}</span>
+        <span class="text-sm leading-relaxed text-stone">{b.text}</span>
+      </div>
+    ))}
+  </section>
+
+  <section class="mb-5 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] items-center gap-6 border border-line-2 bg-panel p-[clamp(28px,4vw,48px)]">
+    <div class="flex flex-col gap-2.5">
+      <h2 class="text-[clamp(22px,3vw,32px)] leading-[1.1] font-extrabold tracking-[-.01em]">Entre na lista e receba os drops antes</h2>
+      <p class="text-sm leading-relaxed text-stone">Um e-mail por semana com novidades e restock. Sem spam.</p>
+    </div>
+    <Newsletter client:visible />
+  </section>
+</StoreLayout>
